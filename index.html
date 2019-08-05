@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Boston Motor Vehicle Accidents: Demographic Factors</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -25,8 +25,115 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<!-- home -->
+				<section data-background-image="img/front.jpg" data-state="dimbg_dark">
+					<h2>Boston Motor Vehicle Accidents: Demographic Factors</h2>
+					<p>
+						<b>Group Members (in Alphabetical Order):</b> <br>
+						Yuqing LIU, 
+						Shi QIU, 
+						Xuejun SUN, <br>
+						Shuang ZHANG, 
+						Lexie Zimmy
+					</p>
+					<p style="color:red">NOT FINAL VERSION</p>
+				</section>
+				<!-- boston high rate -->
+				<section>
+					<section>
+						<h2>Boston is suffering from motor accidents</h2>
+						<img src="img/2.png" height="70%" width="70%">
+					</section>
+					<section>
+						<h2>Boston Motor Accident Trend</h2>
+						<img src="img/time_trend.png" height="64%" width="64%">
+					</section>
+				</section>
+				<!-- data that we have -->
+				<section>
+					<section data-markdown data-background-image="img/data.jpg">
+						## Data that we have
+						- Boston 2016 Crime Data
+						- Boston 2016 Census Data
+					</section>
+					<section data-markdown data-background-image="img/crime.jpg">
+						### Boston 2016 Crime Data
+						- OFFENSE_CODE
+						- DISTRICT
+						- OCCURRED_ON_DATE
+						- tract
+						- p_unemp
+						- p_working
+						- ...
+					</section>
+					<section data-markdown data-background-image="img/census.png">
+						### Boston 2016 Census Data
+						- tract
+						- pop\, pop_den
+						- med_age
+						- med_hh_inc
+						- p_white
+						- p_poverty
+						- p_unemp
+						- ...
+					</section>
+				</section>
+				<!-- page 5 -->
+				<section>
+					<section data-markdown>
+						## Data wrangling
+						- Filter
+						- Summarize
+						- Join
+						- Mutate
+					</section>
+					<section>
+						<h2>Filtering</h2>
+						<ul>
+							<li class="fragment">Remove duplicated data</li>
+							<li class="fragment">Filter out motor accident records</li>
+							<pre class="fragment">
+								<code>
+crime <- boston_crime_2016[!duplicated(boston_crime_2016$INCIDENT_NUMBER),]
+crime <- crime %>%
+	filter(OFFENSE_CODE_GROUP=="Motor Vehicle Accident Response")
+								</code>
+							</pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Summarize & Join</h2>
+						<ul>
+							<li class="fragment">Summarize the total number of accidents per tract</li>
+							<li class="fragment">Left join with Boston Census 2016</li>
+							<pre class="fragment">
+								<code>
+crime <- crime %>%
+	group_by(tract) %>%
+	summarize(total_crime=n()) %>%
+	left_join(boston_census_2016,by=c("tract"="tract"))
+								</code>
+							</pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Mutate</h2>
+						
+					</section>
+				</section>
+				<!-- page 4 -->
+				<section data-markdown>
+					## Linear Regression
+					`$$Y=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+				</section>
+				<!-- page 6 -->
+				<section>
+					
+				</section>
+				<!-- page 7 -->
+				<section>
+					
+				</section>
 			</div>
 		</div>
 
@@ -40,9 +147,18 @@
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/math/math.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
+					{ src: 'plugin/highlight/highlight.js', async: true },
+					{ src: 'plugin/jquery/jquery-3.4.1.min.js' },
+					{ src: 'plugin/highcharts/highcharts.js' },
+					{ src: 'plugin/highcharts/highcharts-more.js' }
+				],
+				controls: false,
+				progress: false,
+				center: true,
+				history: false,
+				slideNumber: true
 			});
 		</script>
 	</body>
