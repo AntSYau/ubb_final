@@ -162,12 +162,30 @@ crime <- crime %>%
 						- Physical functionality
 						- ?????
 					</section>
-					<section data-markdown data-background-image="">
+					<section data-background-image="">
+						<style>
+								.container{
+									display: flex;
+								}
+								.col{
+									flex: 1;
+								}
+								</style>
 						Accident Rate ~
-						### Population Density
-						The rate of traffic accidents increases as population density decreases.
-						- Sprawling land use patterns outside of the urban core
-						- Higher speeds, more vehicle miles traveled
+						<h3>Population Density</h3>
+						<div class="container">
+						<div class="col">
+						<p style="text-align:left ">The rate of traffic accidents increases as population density decreases.</p>
+						<ul>
+						<li>Sprawling land use patterns outside of the urban core</li>
+						<li>Higher speeds, more vehicle miles traveled</li></ul></div>
+						<div class="col"><iframe
+							src="https://exploratory.io/viz/sYI5DRG4pI/Frequency-of-Motor-Vehicle-Accidents-by-Tract-LTZ9hgB8mx?embed=true"
+							frameborder="0"
+							width="100%"
+							height="100%"
+						>
+						</iframe></div></div>
 					</section>
 					<section>
 					<img height="50%" width="50%" src="img/popden.jpg">
@@ -180,15 +198,15 @@ crime <- crime %>%
 				<!-- page 7 -->
 				<section data-markdown>
 					## Conclusion
-					- Women and kids tend to express more concern on motor vehicle accident
+					- Women and kids tend to express more concerns about safety
 					- High population density & Lower employment rate `$\rightarrow$` More accident
 					- Seniors often cause higher accident rate
 				</section>
 				<section data-markdown>
 					## Suggestion
 					- Increase the employment rate
-					- Make limitaton in drivers
-					- Propagations
+					- Target safety improvement resources in tracts with higher populations of seniors
+					- Implement traffic calming measures in more sprawled tracts
 				</section>
 			</div>
 		</div>
