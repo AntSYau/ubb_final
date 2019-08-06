@@ -110,29 +110,79 @@ crime <- crime %>%
 								<code>
 crime <- crime %>%
 	group_by(tract) %>%
-	summarize(total_crime=n()) %>%
+	summarize(total_accident=n()) %>%
 	left_join(boston_census_2016,by=c("tract"="tract"))
 								</code>
 							</pre>
 						</ul>
 					</section>
-					<section>
-						<h2>Mutate</h2>
-						
+					<section data-markdown>
+						## Mutate
+						- Calculate accident rate per 1,000 population
+						`$$ accident\_rate = \frac{total\_accident}{pop}\times1000 $$`
 					</section>
 				</section>
 				<!-- page 4 -->
-				<section data-markdown>
-					## Linear Regression
-					`$$Y=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+				<section>
+					<section data-markdown>
+						## Linear Regression
+						`$$Y=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+						- `$\beta_0$`: Constant
+						- `$\beta_jX_{ij}$`: Independent variables and its coefficients
+						- `$\epsilon_i$`: Random error
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							`$$Y=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+							<img src="img/coeff.png" height="80%" width="80%">
+						</script>
+					</section>
 				</section>
 				<!-- page 6 -->
 				<section>
-					
+					<section data-markdown data-background-image="">
+						Accident Rate ~
+						### Percentage of Female Population
+						- Females tend to express more concern on motor vehicle accident than males
+						- Different social and economic status
+					</section>
+					<section data-markdown data-background-image="">
+						Accident Rate ~
+						### Employment Rate
+						- Higher average vehicle condition
+						- Lower anxiety
+					</section>
+					<section data-markdown data-background-image="">
+						Accident Rate ~
+						### Percentage of Senior Population
+						- Physical functionality
+						- ?????
+					</section>
+					<section data-markdown data-background-image="">
+						Accident Rate ~
+						### Population Density
+						The most effective way to decrease the rate of accidents is to focus on improving the safety of sprawled areas, using strategies that specifically target the pitfalls of this type of transportation planning. 
+					</section>
+					<section>
+					<img height="50%" width="50%" src="img/popden.jpg">
+					</section>
+					<section data-markdown data-background-image="">
+						Accident Rate ~
+						Percentage of Kids
+					</section>
 				</section>
 				<!-- page 7 -->
-				<section>
-					
+				<section data-markdown>
+					## Conclusion
+					- Women and kids tend to express more concern on motor vehicle accident
+					- High population density & Lower employment rate `$\rightarrow$` More accident
+					- Seniors often cause higher accident rate
+				</section>
+				<section data-markdown>
+					## Suggestion
+					- Increase the employment rate
+					- Make limitaton in drivers
+					- Propagations
 				</section>
 			</div>
 		</div>
@@ -154,7 +204,7 @@ crime <- crime %>%
 					{ src: 'plugin/highcharts/highcharts.js' },
 					{ src: 'plugin/highcharts/highcharts-more.js' }
 				],
-				controls: false,
+				//controls: false,
 				progress: false,
 				center: true,
 				history: false,
