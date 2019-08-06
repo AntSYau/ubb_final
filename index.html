@@ -130,14 +130,14 @@ crime <- crime %>%
 				<section>
 					<section data-markdown>
 						## Linear Regression
-						`$$Y=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+						`$$Y_i=\beta_0+\beta_1X_{i1}+\beta_2X_{i2}+\ldots+\beta_pX_{ip}+\epsilon_i$$`
+						- `$Y_i$`: Accident rate
 						- `$\beta_0$`: Constant
 						- `$\beta_jX_{ij}$`: Independent variables and its coefficients
 						- `$\epsilon_i$`: Random error
 					</section>
 					<section data-markdown>
 						## Stepwise Regression
-						![](img/stepwise.jpg)
 					</section>
 					<section data-markdown>
 						<script type="text/template">
@@ -205,11 +205,14 @@ crime <- crime %>%
 					</section>
 				</section>
 				<!-- page 7 -->
-				<section data-markdown>
+				<section data-markdown style="font-size: 85%">
+					<script type="text/template">
 					## Conclusion
 					- Women and kids tend to express more concerns about safety
 					- Higher population density & Lower employment rate `$\rightarrow$` More accident
 					- Seniors often cause higher accident rate
+					<img src="img/coeff.png" height="60%" width="60%" >
+				</script>
 				</section>
 				<section data-markdown>
 					## Suggestion
@@ -240,7 +243,7 @@ crime <- crime %>%
 				//controls: false,
 				progress: false,
 				center: true,
-				history: false,
+				history: true,
 				slideNumber: true
 			});
 		</script>
